@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.ToMyAccount"
+             Title="ToMyAccount"
+             Shell.FlyoutBehavior="Flyout"
+             Shell.NavBarHasShadow="False">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+    
+    <VerticalStackLayout Spacing="10">
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:NavbarContent BackgroundColor="{StaticResource PersonalCustomerColor}" HeightRequest="50"/>
+        </StackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Gönderen Hesap" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0,20,0"/>
+            <Picker 
+                SelectedIndexChanged="pickerGonderenHesap_SelectedIndexChanged"
+                HorizontalOptions="FillAndExpand"
+                Margin="20,0,20,0"
+                x:Name="pickerGonderenHesap" 
+                Title="Hesap seçiniz"
+                ItemDisplayBinding="{Binding AccountNumber}" />
+            <Label Text="Alıcı Hesap" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0,20,0"/>
+            <Picker 
+                HorizontalOptions="FillAndExpand"
+                Margin="20,0,20,0"
+                x:Name="pickerAliciHesap" 
+                Title="Hesap seçiniz"
+                ItemDisplayBinding="{Binding AccountNumber}"/>
+        </VerticalStackLayout>
+
+        <Label Text="Tutar" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0,20,0"/>
+        <Entry 
+            x:Name="txtTutar" 
+            HeightRequest="50"  
+            Placeholder="Gönderilecek tutarı girin"
+            Margin="20,0,20,0"
+            ClearButtonVisibility="WhileEditing"
+            Keyboard="Numeric" 
+            MaxLength="11"
+            FontAttributes="Bold" 
+            VerticalOptions="Center" 
+            HorizontalOptions="FillAndExpand">
+        </Entry>
+
+        <VerticalStackLayout>
+            <Label Text="İşlem Tarihi:" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0,20,0"/>
+            <DatePicker x:Name="transactionDatePicker" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,0,20,0"/>
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Spacing="10" Margin="25,0,0,0">
+            <Button 
+                x:Name="btnSend"
+                TextColor="White" 
+                Text="Gönder"  
+                FontSize="15"
+                FontAttributes="Bold"
+                BorderWidth="2"
+                BorderColor="Black"
+                BackgroundColor="{StaticResource PersonalCustomerColor}"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand"
+                Clicked="btnSend_Clicked"/>
+            <Button
+                TextColor="White" 
+                Text="Geri Dön"  
+                FontSize="15"
+                FontAttributes="Bold"
+                BorderWidth="2"
+                BorderColor="Black"
+                BackgroundColor="{StaticResource PersonalCustomerColor}"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand"
+                Clicked="btnGeri_Clicked"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

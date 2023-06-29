@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="NezihBankMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NezihBankMAUI"
+    xmlns:startupPages="clr-namespace:NezihBankMAUI.Views.Startup"
+    xmlns:views="clr-namespace:NezihBankMAUI.Views.CustomerView"
+    xmlns:bankManagerviews="clr-namespace:NezihBankMAUI.Views.BankManagerView"
+    xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+    xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+    x:Name="shell"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    FlyoutBackgroundColor="{AppThemeBinding Light=White, Dark={StaticResource White}}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource CorporateCustomerColor}}"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+    Shell.TabBarUnselectedColor="DarkGray">
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="50,*" Padding="10">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=LightYellow, Dark={StaticResource YellowColor}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                
+                <Image Source="{Binding Icon}"/>
+                <Label Grid.Column="1" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Title}" TextColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}" FontAttributes="Bold"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#455A64" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+        </Style>
+        <Style TargetType="ShellItem"
+               BasedOn="{StaticResource BaseStyle}" />
+        <Style x:Key="Tema1"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#ED3B3B" />
+        </Style>
+        <Style x:Key="Tema2"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#546DFE" />
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <FlyoutItem>
+        <ShellContent Route="personalLogin"
+                  Title="Bireysel"
+                  ContentTemplate="{DataTemplate startupPages:LoginPage}" 
+                  FlyoutItemIsVisible="False"
+                  Shell.FlyoutBehavior="Disabled"
+                  Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.User}, FontFamily=FAS, Color=Black}"/>
+        <ShellContent Route="corporateLogin"
+                      Title="Kurumsal"
+                      Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.BuildingColumns}, FontFamily=FAS, Color=Black}"
+                      ContentTemplate="{DataTemplate startupPages:LoginPage2}"
+                      FlyoutItemIsVisible="False"
+                      Shell.FlyoutBehavior="Disabled"/>
+        <ShellContent Route="bankManagerLogin"
+                      Title="Yetkili"
+                      Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Briefcase}, FontFamily=FAS, Color=Black}"
+                      ContentTemplate="{DataTemplate startupPages:BankManagerLogin}"
+                      FlyoutItemIsVisible="False"
+                      Shell.FlyoutBehavior="Disabled"/>
+    </FlyoutItem>
+
+    <FlyoutItem>
+        <ShellContent Route="bankManagerRegister"
+                      Title="Yetkili Kayıt"
+                      Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Briefcase}, FontFamily=FAS, Color=Black}"
+                      ContentTemplate="{DataTemplate startupPages:BankManagerRegister}"
+                      FlyoutItemIsVisible="False"
+                      Shell.FlyoutBehavior="Disabled"/>
+    </FlyoutItem>
+
+    <Tab Title="Anasayfa" Route="homepage" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.House}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate views:HomePage}" />
+    </Tab>
+    <Tab Title="İşlem" Route="islem" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.RightLeft}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate views:TransactionPage}" />
+    </Tab>
+    <Tab Title="Hesap"
+             Route="domestic"
+             Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Wallet}, FontFamily=FAS, Color=Black}">
+        <ShellContent Route="hesap"
+                          Style="{StaticResource Tema1}"
+                          Title="Hesaplar"
+                          ContentTemplate="{DataTemplate views:AccountPage}" />
+        <!--<ShellContent Route="dogs"
+                          Style="{StaticResource Tema1}"
+                          Title="Hesap Aç"
+                          ContentTemplate="{DataTemplate views:TransactionPage}" />-->
+    </Tab>
+    <Tab Title="Kampanya" Route="kampanya" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Gift}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate views:CampaignsPage}" />
+    </Tab>
+
+    <FlyoutItem Title="Profilim" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.User}, FontFamily=FAS, Color={AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}}">
+        <ShellContent Title="Profilim" Route="profil" ContentTemplate="{DataTemplate views:ProfilePage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Hakkında" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.CircleInfo}, FontFamily=FAS, Color={AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}}">
+        <ShellContent Title="Hakkında" Route="about" ContentTemplate="{DataTemplate views:AboutPage}"/>
+    </FlyoutItem>
+
+
+    <Tab Title="YetkiliSayfa" Route="managerhome" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Gift}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:BankManagerHomepage}" />
+    </Tab>
+    <Tab Title="Müşteri Ekle" Route="customerAdd" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.UserPlus}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:CustomerAddPage}" />
+    </Tab>
+    <Tab Title="Müşteri Görüntüle" Route="customerView" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.AddressBook}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:ViewCustomersPage}" />
+    </Tab>
+    <Tab Title="Müşteri Hesabı Aç" Route="customerAccountAdd" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.FileCirclePlus}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:CustomerAccountAddPage}" />
+    </Tab>
+    <Tab Title="Müşteri Hesabı Görüntüle" Route="customerAccountView" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.FileLines}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:ViewCustomerAccountPage}" />
+    </Tab>
+    <Tab Title="Kampanya Ekle" Route="campaignAdd" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.Bullhorn}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:AddCampaignsPage}" />
+    </Tab>
+    <Tab Title="Kampanya Görüntüle" Route="campaignView" Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.RectangleList}, FontFamily=FAS, Color=Black}">
+        <ShellContent Style="{StaticResource Tema1}" ContentTemplate="{DataTemplate bankManagerviews:ViewCampaignsPage}" />
+    </Tab>
+
+    <!--<ShellContent Route="profil"
+                  Title="Profilim"
+                  Style="{StaticResource Tema1}"
+                  ContentTemplate="{DataTemplate views:ProfilePage}" 
+                  Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.User}, FontFamily=FAS, Color={AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}}" />
+
+    <ShellContent Route="about"
+                  Style="{StaticResource Tema1}"
+                  Title="Hakkında"
+                  Icon="{FontImageSource Glyph={x:Static icons:FASIconHelper.CircleInfo}, FontFamily=FAS, Color={AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}}"
+                  ContentTemplate="{DataTemplate views:AboutPage}" />
+
+    <MenuItem Text="Yardım"
+              IconImageSource="{FontImageSource Glyph={x:Static icons:FASIconHelper.CircleQuestion}, FontFamily=FAS, Color={AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}}"
+              Command="{Binding HelpCommand}"
+              CommandParameter="https://docs.microsoft.com/dotnet/maui/fundamentals/shell" />-->
+
+</Shell>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.AccountPage"
+             Title="AccountPage"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Flyout"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Background>
+        <RadialGradientBrush Center="0,0" Radius="0.8">
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray300}, Dark={StaticResource DarkBlack}}" Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray200}, Dark={StaticResource DarkBlack200}}" Offset="0.5" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray100}, Dark={StaticResource DarkBlack100}}" Offset="1.0" />
+        </RadialGradientBrush>
+    </ContentPage.Background>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <CollectionView 
+                    x:Name="lstAccounts"
+                    Margin="16,5,16,5" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand"  
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0,10,0,0" Padding="10" BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}">
+                                    <StackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="5">
+                                            <Label Text="Hesap Numarası:" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CrimsonColor}}"/>
+                                            <Label Text="{Binding AccountNumber}" FontSize="16" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="5">
+                                            <Label Text="IBAN:" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CrimsonColor}}"/>
+                                            <Label Text="{Binding IbanNumber}" FontSize="16" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout HorizontalOptions="EndAndExpand" Spacing="5">
+                                            <Label Text="Bakiye:" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CrimsonColor}}"/>
+                                            <Label Text="{Binding Balance}" VerticalOptions="Center" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <Label Text="TL" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CrimsonColor}}"/>
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+                                </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

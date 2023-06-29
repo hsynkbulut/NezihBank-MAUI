@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.TransactionPage"
+             Title="TransactionPage"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Flyout"
+             BackgroundImageSource="bank_cld.jpg"
+             Shell.NavBarHasShadow="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource YellowColor}, Dark={StaticResource DarkBlack}}">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <StackLayout Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,10,0,10">
+                    <!--Kendi Hesabıma Para Gönder-->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToMyAccountOnFrame_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                                Margin="0,0,10,0"
+                                Padding="0"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                CornerRadius="16"
+                                HasShadow="False"
+                                HeightRequest="42"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="42">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    WidthRequest="24"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static icons:FASIconHelper.MoneyBillTransfer}"
+                                            Size="28"
+                                            Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Kendi Hesabıma Para Gönder" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!--Başka Hesaba Para Gönder-->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToAnotherAccountOnFrame_Tapped"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                                Margin="0,0,10,0"
+                                Padding="0"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                CornerRadius="16"
+                                HasShadow="False"
+                                HeightRequest="42"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="42">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    WidthRequest="24"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static icons:FASIconHelper.MoneyBillTransfer}"
+                                            Size="28"
+                                            Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Başka Hesaba Para Gönder" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                    
+                    <!--Ödemeler-->
+                    <!--<Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PaymentsOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                                Margin="0,0,10,0"
+                                Padding="0"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                CornerRadius="16"
+                                HasShadow="False"
+                                HeightRequest="42"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="42">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    WidthRequest="24"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static icons:FASIconHelper.Coins}"
+                                            Size="28"
+                                            Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Ödemeler" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>-->
+
+                    <!--Bağış İşlemleri-->
+                    <!--<Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DonationTransactionsOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                                Margin="0,0,10,0"
+                                Padding="0"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                CornerRadius="16"
+                                HasShadow="False"
+                                HeightRequest="42"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="42">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    WidthRequest="24"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static icons:FASIconHelper.HandHoldingHeart}"
+                                            Size="28"
+                                            Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Bağış İşlemleri" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>-->
+                
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.ProfilePage"
+             Title="ProfilePage"
+             BackgroundImageSource="bank_cld.jpg"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource Black}}"
+             Shell.NavBarHasShadow="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="0,20,0,0" Padding="20" Spacing="0">
+                    <Border WidthRequest="400" HeightRequest="250" BackgroundColor="Black" Opacity="1" Margin="0,-66,0,20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30"/>
+                        </Border.StrokeShape>
+                        <Image Source="banking_cloud.jpg" Aspect="AspectFill" Opacity="0.6">
+                            <Image.Shadow>
+                                <Shadow Brush="white" Offset="20,20" Radius="80" Opacity="0.8" />
+                            </Image.Shadow>
+                        </Image>
+                    </Border>
+                </StackLayout>
+                <BoxView Color="Black" HeightRequest="4" Opacity="0.6"/>
+                
+                <!-- Profil Resmi ve Ad Soyad -->
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,-210,0,0" Spacing="10">
+                    <Frame
+                        BorderColor="{StaticResource White}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                        CornerRadius="50"
+                        WidthRequest="95"
+                        HeightRequest="95">
+                        <Image
+                            Aspect="AspectFit"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.User}"
+                                    Size="60"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                            </Image.Source>
+                        </Image>
+                    </Frame>
+                    <Label x:Name="customerName" Text="" TextColor="White" FontAttributes="Bold" FontSize="21" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label x:Name="customerSurname" Text="" TextColor="White" FontAttributes="Bold" FontSize="21" VerticalOptions="Center" HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Margin="0,140,0,0">
+                    <!--Ev Adresi-->
+                    <Frame
+                        x:Name="frameAddress"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"
+                        Margin="20,6"
+                        Padding="20"
+                        CornerRadius="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewAddressOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                    CornerRadius="20"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="50">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="32"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="FAS"
+                                                Glyph="{x:Static icons:FASIconHelper.LocationDot}"
+                                                Size="28"
+                                                Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Frame>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="10,0,0,0">
+                                    <Label
+                                        Margin="-17,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontFamily="MainFont"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="Adres Bilgileri"
+                                        TextColor="{AppThemeBinding Light=#666666, Dark={StaticResource Yellow100Accent}}"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="10,0"
+                                Aspect="AspectFit"
+                                HeightRequest="25">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--E-posta-->
+                    <Frame
+                        x:Name="frameEmail"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"
+                        Margin="20,6"
+                        Padding="20"
+                        CornerRadius="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewEmailOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Frame 
+                                    Padding="0"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                    CornerRadius="20"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="50">
+                                    <Image 
+                                        Aspect="AspectFit"
+                                        HeightRequest="32"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource 
+                                                FontFamily="FAS"
+                                                Glyph="{x:Static icons:FASIconHelper.At}"
+                                                Size="28"
+                                                Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Frame>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="10,0,0,0">
+                                    <Label 
+                                        Margin="-21,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontFamily="MainFont"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="E-posta Bilgileri"
+                                        TextColor="{AppThemeBinding Light=#666666, Dark={StaticResource Yellow100Accent}}"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Image 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="10,0"
+                                Aspect="AspectFit"
+                                HeightRequest="25">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Telefon Numarası-->
+                    <Frame
+                        x:Name="framePhoneNumber"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"
+                        Margin="20,6"
+                        Padding="20"
+                        CornerRadius="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewPhoneNumberOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout 
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                    CornerRadius="20"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="50">
+                                    <Image 
+                                        Aspect="AspectFit"
+                                        HeightRequest="32"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource 
+                                                FontFamily="FAS"
+                                                Glyph="{x:Static icons:FASIconHelper.Phone}"
+                                                Size="28"
+                                                Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Frame>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="10,0,0,0">
+                                    <Label 
+                                        Margin="-25,0,10,0"
+                                        FontAttributes="Bold"
+                                        FontFamily="MainFont"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="Telefon Bilgileri"
+                                        TextColor="{AppThemeBinding Light=#666666, Dark={StaticResource Yellow100Accent}}"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="10,0"
+                                Aspect="AspectFit"
+                                HeightRequest="25">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Şifre Değiştir-->
+                    <Frame
+                        x:Name="framePassword"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"
+                        Margin="20,6"
+                        Padding="20"
+                        CornerRadius="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ChangePasswordOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout 
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                                    CornerRadius="20"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="50">
+                                    <Image 
+                                        Aspect="AspectFit"
+                                        HeightRequest="32"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource 
+                                                FontFamily="FAS"
+                                                Glyph="{x:Static icons:FASIconHelper.Lock}"
+                                                Size="28"
+                                                Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Frame>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="10,0,0,0">
+                                    <Label 
+                                        Margin="-25,0,10,0"
+                                        FontAttributes="Bold"
+                                        FontFamily="MainFont"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="Şifre Değiştir"
+                                        TextColor="{AppThemeBinding Light=#666666, Dark={StaticResource Yellow100Accent}}"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="10,0"
+                                Aspect="AspectFit"
+                                HeightRequest="25">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="FAS"
+                                        Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                        Size="30"
+                                        Color="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

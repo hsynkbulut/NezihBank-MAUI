@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.BankManagerView.CustomerAddPage"
+             Title="Yeni Müşteri Ekle"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Disabled">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarBankManager />
+        </StackLayout>
+    </Shell.TitleView>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10" BackgroundColor="{AppThemeBinding Light={StaticResource YellowColor}, Dark=Orange}">
+                <Entry 
+                    x:Name="txtCustomerId" 
+                    HeightRequest="50"  
+                    Placeholder="Güncellenecek Müşterinin Müşteri ID'sini girin"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Numeric" 
+                    MaxLength="11"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+                </Entry>
+                
+                <Entry 
+                    x:Name="txtIdentityNumber" 
+                    HeightRequest="50"  
+                    Placeholder="TC Kimlik Numarası"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Numeric" 
+                    MaxLength="11"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+                </Entry>
+
+                <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                    <Entry 
+                        x:Name="txtName"
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text" 
+                        Placeholder="Adı"
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing"
+                        MaxLength="25">
+                    </Entry>
+
+                    <Entry
+                        Margin="15,0,0,0"
+                        x:Name="txtSurname"
+                        Keyboard="Text" 
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Soyadı"
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing"
+                        MaxLength="25">
+                    </Entry>
+                </StackLayout>
+
+                <Entry 
+                    x:Name="txtEmail" 
+                    HeightRequest="50"  
+                    Placeholder="E-mail adresi"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Email"
+                    MaxLength="40">
+                </Entry>
+
+                <Entry 
+                    x:Name="txtPhoneNumber" 
+                    HeightRequest="50"  
+                    Placeholder="Telefon Numarası"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Telephone"
+                    MaxLength="11">
+                </Entry>
+
+                <Entry 
+                    x:Name="txtPassword" 
+                    HeightRequest="50"  
+                    Placeholder="Şifresini belirleyin"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    IsPassword="true"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Numeric"
+                    MaxLength="6"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+                </Entry>
+
+                <HorizontalStackLayout Margin="22,0,20,0">
+                    <Label Text="Doğum Tarihi:" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"/>
+                    <DatePicker x:Name="birthDatePicker" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"/>
+                </HorizontalStackLayout>
+
+                <Editor 
+                    x:Name="txtAddress" 
+                    Placeholder="Ev adresi"
+                    PlaceholderColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    Margin="20,0,20,0"
+                    AutoSize="TextChanges" 
+                    MaximumHeightRequest="120"
+                    MinimumHeightRequest="80"
+                    MaxLength="100"/>
+
+                <HorizontalStackLayout Margin="22,0,20,0">
+                    <Picker 
+                        x:Name="pickerCity" 
+                        Title="Şehir"
+                        TitleColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                        ItemDisplayBinding="{Binding Ad}" 
+                        SelectedIndexChanged="pickerCity_SelectedIndexChanged"
+                        WidthRequest="100"/>
+                    <Picker 
+                        Margin="10,0"
+                        x:Name="pickerDistrict" 
+                        Title="İlçe"
+                        TitleColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                        ItemDisplayBinding="{Binding Ad}"
+                        WidthRequest="100"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10" Margin="25,0,0,0">
+                    <Button 
+                        TextColor="White" 
+                        Text="Ekle"  
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource DarkBlack}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="personalCustomerRegister_Clicked"/>
+                    <Button
+                        TextColor="White" 
+                        Text="Güncelle"  
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource DarkBlack}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="personalCustomerUpdate_Clicked"/>
+                    <Button
+                        x:Name="BackButton"
+                        TextColor="White" 
+                        Text="Geri Dön"  
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource DarkBlack}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="BackButton_Clicked"/>
+                </HorizontalStackLayout>
+
+                <Label 
+                    Text="Zaten kaydı var" 
+                    TextColor="{StaticResource BankManagerColor}"
+                    FontSize="17" 
+                    FontAttributes="Bold" 
+                    Margin="0,0,24,82" 
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="EndAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding KaydiZatenVarCommand}" CommandParameter="{Binding .}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

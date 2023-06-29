@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NezihBankAPI", "NezihBankAPI\NezihBankAPI.csproj", "{69F97922-4DC9-4A1C-BF5B-74EFA7E593F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NezihBankMAUI", "NezihBankMAUI\NezihBankMAUI.csproj", "{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69F97922-4DC9-4A1C-BF5B-74EFA7E593F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F97922-4DC9-4A1C-BF5B-74EFA7E593F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F97922-4DC9-4A1C-BF5B-74EFA7E593F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F97922-4DC9-4A1C-BF5B-74EFA7E593F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B8D98A-AB8E-46FB-BF7E-E0503FD5969B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B159F35-6010-44A5-B6DD-E057F9D61F19}
+	EndGlobalSection
+EndGlobal

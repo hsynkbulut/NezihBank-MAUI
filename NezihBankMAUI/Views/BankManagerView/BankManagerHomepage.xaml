@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.BankManagerView.BankManagerHomepage"
+             Title="BankManagerHomepage"
+             BackgroundImageSource="bank_cld.jpg"
+             Shell.TabBarIsVisible="False"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Disabled">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarBankManager />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <StackLayout Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,10">
+                    <Frame Padding="8" HasShadow="True" Margin="0,0,0,10" BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource BankManagerColor}}">
+                        <VerticalStackLayout Spacing="10">
+                            <Frame 
+                        HeightRequest="160"
+                        WidthRequest="330"
+                        Padding="8"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="10" 
+                        BorderColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource CorporateCustomerColor}}">
+                                <Image Source="logobank.png" />
+                            </Frame>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="Hoşgeldiniz, Sayın" FontSize="17" TextColor="{StaticResource White}"/>
+                                <Label x:Name="managerName" Text="" FontSize="17" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource YellowColor}, Dark={StaticResource YellowColor}}"/>
+                                <Label x:Name="managerSurname" Text="" FontSize="17" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource YellowColor}, Dark={StaticResource YellowColor}}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Müşteri Ekle -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddCustomerOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.UserPlus}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Müşteri Ekle" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Müşterileri Görüntüle -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewCustomersOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.AddressBook}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Müşterileri Görüntüle" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Müşteri Hesabı Aç -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddCustomerAccountOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.FileCirclePlus}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Müşteri Hesabı Aç" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource
+                            FontFamily="FAS"
+                            Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                            Size="30"
+                            Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Müşteri Hesaplarını Görüntüle -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewCustomerAccountOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.FileLines}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Müşteri Hesaplarını Görüntüle" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource 
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Kampanya Ekle -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddAnnouncementOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.Bullhorn}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Kampanya Ekle" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource 
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Kampanyaları Görüntüle -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewAnnouncementOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.RectangleList}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Kampanyaları Görüntüle" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource 
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Şifre değiştir -->
+                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" Padding="10" Margin="0,0,0,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ChangePasswordOnFrame_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Margin="0,0,10,0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"
+                        CornerRadius="16"
+                        HasShadow="False"
+                        HeightRequest="42"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="42">
+                                <Image
+                            Aspect="AspectFit"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource
+                                    FontFamily="FAS"
+                                    Glyph="{x:Static icons:FASIconHelper.Lock}"
+                                    Size="28"
+                                    Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BankManagerColor}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Frame>
+
+                            <Label Text="Şifre değiştir" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Image WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="5,0,0,0">
+                                <Image.Source>
+                                    <FontImageSource 
+                                FontFamily="FAS"
+                                Glyph="{x:Static icons:FASIconHelper.ArrowRight}"
+                                Size="30"
+                                Color="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+    
+
+</ContentPage>

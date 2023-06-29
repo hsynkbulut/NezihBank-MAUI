@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.BankManagerView.CustomerAccountAddPage"
+             Title="Müşteri Hesabı Aç"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource YellowColor}}"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Disabled">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarBankManager />
+        </StackLayout>
+    </Shell.TitleView>
+    
+    <ContentPage.Background>
+        <RadialGradientBrush Center="0,0" Radius="0.8">
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray300}, Dark={StaticResource DarkGray300}}" Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray200}, Dark={StaticResource DarkGray200}}" Offset="0.5" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray100}, Dark={StaticResource DarkGray100}}" Offset="1.0" />
+        </RadialGradientBrush>
+    </ContentPage.Background>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <StackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="16,0,16,10">
+                    <Entry 
+                        x:Name="txtAccountId" 
+                        Margin="0,10,0,0"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        Placeholder="Güncellemek için Hesap ID'sini girin" 
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing" 
+                        Keyboard="Numeric" />
+                    <Entry 
+                        x:Name="txtCustomerId" 
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        Placeholder="Müşteri ID/Numarasını girin" 
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing" 
+                        Keyboard="Numeric" />
+                    <Entry 
+                        x:Name="txtIban" 
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        Placeholder="Iban numarasını girin" 
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource DarkBlack}}"
+                        Keyboard="Numeric" 
+                        MaxLength="24"
+                        ClearButtonVisibility="WhileEditing"/>
+                    <Entry 
+                        x:Name="txtHesapNo" 
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        Placeholder="Hesap numarasını girin" 
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing" 
+                        Keyboard="Numeric"
+                        MaxLength="7"/>
+                    <Entry 
+                        x:Name="txtBakiye" 
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        Placeholder="Bakiye olarak 1 TL girin" 
+                        PlaceholderColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource DarkBlack}}"
+                        ClearButtonVisibility="WhileEditing" 
+                        Keyboard="Numeric"/>
+                </StackLayout>
+
+                <VerticalStackLayout Margin="16,5,16,5" Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                        <Button 
+                            x:Name="btnKaydet"
+                            Text="Müşteri Hesabı Aç"
+                            TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            CornerRadius="20" 
+                            BorderWidth="2" 
+                            BorderColor="Black" 
+                            BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource BankManagerColor}}"
+                            Clicked="btnKaydet_Clicked"/>
+                        <Button 
+                            x:Name="btnGuncelle"
+                            Text="Müşteri Hesabı Güncelle"
+                            TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            CornerRadius="20" 
+                            BorderWidth="2" 
+                            BorderColor="Black" 
+                            BackgroundColor="{StaticResource BankManagerColor}"
+                            Clicked="btnGuncelle_Clicked"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                        <Button 
+                            x:Name="btnListele"
+                            Text="Müşteri Hesaplarını Listele"
+                            TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            CornerRadius="20" 
+                            BorderWidth="2" 
+                            BorderColor="Black" 
+                            BackgroundColor="{StaticResource BankManagerColor}"
+                            Clicked="btnListele_Clicked"/>
+                        <Button 
+                            x:Name="BackButton"
+                            Text="Geri Dön"
+                            TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            WidthRequest="135"
+                            CornerRadius="20" 
+                            BorderWidth="2" 
+                            BorderColor="Black" 
+                            BackgroundColor="{StaticResource BankManagerColor}"
+                            Clicked="BackButton_Clicked"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <CollectionView 
+                    x:Name="lstHesaplar"
+                    Margin="16,16,16,5" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand"  
+                    SelectionMode="None" 
+                    SelectionChanged="lstHesaplar_SelectionChanged"
+                    RemainingItemsThreshold="5" 
+                    RemainingItemsThresholdReached="lstHesaplar_RemainingItemsThresholdReached">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItemView>
+                                            <Frame BackgroundColor="Red" Padding="10">
+                                                <Label Text="Sil" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="{StaticResource White}">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference lstHesaplar}, Path=BindingContext.HesapSilCommand}" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Frame>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <Frame Margin="0,10,0,0" Padding="10" BackgroundColor="{StaticResource BankManagerColor}">
+                                    <StackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Müşteri ID/Numarası:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource YellowColor}"/>
+                                            <Label Text="{Binding PersonalCustomerId}" FontSize="16" TextColor="{StaticResource White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Hesap ID:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource YellowColor}"/>
+                                            <Label Text="{Binding AccountId}" FontSize="16" TextColor="{StaticResource White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Hesap Numarası:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource YellowColor}"/>
+                                            <Label Text="{Binding AccountNumber}" VerticalOptions="Center" FontSize="16" TextColor="{StaticResource White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="IBAN:" FontSize="17" FontAttributes="Bold" TextColor="{StaticResource YellowColor}"/>
+                                            <Label Text="{Binding IbanNumber}" FontSize="17" VerticalOptions="Center" TextColor="{StaticResource White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Bakiye:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource YellowColor}"/>
+                                            <Label Text="{Binding Balance}" VerticalOptions="Center" FontSize="16" TextColor="{StaticResource White}"/>
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

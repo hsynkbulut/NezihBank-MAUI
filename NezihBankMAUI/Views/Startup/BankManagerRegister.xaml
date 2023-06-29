@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NezihBankMAUI.Views.Startup.BankManagerRegister"
+             Title="Yetkili Kayıt Ekranı"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10" >
+                <Label 
+                    HeightRequest="110"  
+                    HorizontalOptions="FillAndExpand" 
+                    Text="Nezih Bank" 
+                    TextColor="{StaticResource White}" 
+                    BackgroundColor="{StaticResource BankManagerColor}"
+                    FontSize="40" 
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+                <Entry 
+                    x:Name="txtIdentityNumber" 
+                    HeightRequest="50"  
+                    Placeholder="TC Kimlik Numarası"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Numeric" 
+                    MaxLength="11"
+                    FontAttributes="Bold" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+                </Entry>
+                <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                    <Entry 
+                        x:Name="txtName"
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text" 
+                        Placeholder="Ad"
+                        ClearButtonVisibility="WhileEditing"
+                        MaxLength="25">
+                    </Entry>
+
+                    <Entry
+                        Margin="15,0,0,0"
+                        x:Name="txtSurname"
+                        HeightRequest="50" 
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text"
+                        Placeholder="Soyad"
+                        ClearButtonVisibility="WhileEditing"
+                        MaxLength="25">
+                    </Entry>
+                </StackLayout>
+                <Entry 
+                    x:Name="txtPassword" 
+                    HeightRequest="50"  
+                    Placeholder="Şifrenizi belirleyiniz"
+                    IsPassword="true"
+                    Margin="20,0,20,0"
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Numeric"
+                    MaxLength="6"
+                    FontAttributes="Bold" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+                </Entry>
+                <Button 
+                    x:Name="bankManagerRegister"
+                    Margin="20,0,20,0" 
+                    HeightRequest="50" 
+                    TextColor="White" 
+                    Text="Kayıt Ol"  
+                    BackgroundColor="{StaticResource BankManagerColor}"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="bankManagerRegister_Clicked"/>
+                <Label 
+                    Text="Zaten bir hesabım var" 
+                    TextColor="{StaticResource BankManagerColor}"
+                    Margin="0,0,0,20"  
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding KaydiZatenVarCommand}" CommandParameter="{Binding .}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

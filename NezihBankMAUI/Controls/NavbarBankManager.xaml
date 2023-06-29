@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             x:Class="NezihBankMAUI.Controls.NavbarBankManager"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="CenterAndExpand">
+
+    <StackLayout
+        HeightRequest="52"
+        HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            Spacing="5"
+            VerticalOptions="CenterAndExpand">
+
+        <Label
+                Margin="15,0"
+                FontAttributes="Bold"
+                FontFamily="MainFont"
+                FontSize="26"
+                HorizontalOptions="StartAndExpand"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                Text="Nezih Bank"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding HomePageCommand}" CommandParameter="{Binding .}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Image
+                Margin="10,0"
+                Aspect="AspectFit"
+                HeightRequest="25">
+            <Image.Source>
+                <FontImageSource
+                        FontFamily="FAS"
+                        Glyph="{x:Static icons:FASIconHelper.ArrowRightFromBracket}"
+                        Size="25"
+                        Color="White" />
+            </Image.Source>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToLoginPageCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+
+
+</ContentView>

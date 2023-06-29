@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.BankManagerView.CampaignDetailPage"
+             BackgroundImageSource="bank_cld.jpg"
+             Title="Kampanya Detayları">
+
+    <VerticalStackLayout
+        VerticalOptions="Start" 
+        HorizontalOptions="FillAndExpand">
+        <controls:NavbarBankManager BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource Black}}" />
+
+        <VerticalStackLayout Margin="10,10" HorizontalOptions="CenterAndExpand">
+            <Frame Padding="8" HasShadow="True" Margin="0,10" MaximumHeightRequest="600" MaximumWidthRequest="373">
+                <Frame.Shadow>
+                    <Shadow Brush="Black" Offset="20,20" Radius="40" Opacity="0.8" />
+                </Frame.Shadow>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                    <Frame 
+                        Padding="8"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="LightSlateGray" 
+                        CornerRadius="7" 
+                        BorderColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource CorporateCustomerColor}}">
+                        <Image x:Name="lblImages">
+                            <Image.Source>
+                                <UriImageSource Uri="" />
+                            </Image.Source>
+                        </Image>
+                    </Frame>
+                    <VerticalStackLayout Margin="10,10" VerticalOptions="Center" HorizontalOptions="StartAndExpand" >
+                        <Label x:Name="lblBaslik" Text="" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource CorporateCustomerColor}}"/>
+                        <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill" Margin="0,5"/>
+                        <Label x:Name="lblIcerik" Text="" FontSize="15" TextColor="DimGray"/>
+                    </VerticalStackLayout>
+                </StackLayout>
+            </Frame>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button 
+                    x:Name="btnBilgi" 
+                    Text="Detaylı Bilgi"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    CornerRadius="6"
+                    BorderWidth="2"
+                    Clicked="btnBilgi_Clicked"
+                    BorderColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource YellowColor}}"
+                    TextColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource YellowColor}}"
+                    BackgroundColor="{AppThemeBinding Light=LightGray, Dark=LightYellow}"/>
+                <Button 
+                    x:Name="btnHome" 
+                    Text="Anasayfa" 
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    CornerRadius="6"
+                    Clicked="btnHome_Clicked"
+                    TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource YellowColor}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource DarkBlack}}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+    
+</ContentPage>

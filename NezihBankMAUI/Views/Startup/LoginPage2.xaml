@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             x:Class="NezihBankMAUI.Views.Startup.LoginPage2"
+             Title="Kurumsal"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <Grid>
+            <Grid.Background>
+                <RadialGradientBrush Center="0,0" Radius="0.8">
+                    <GradientStop Color="#FFFF00" Offset="0.1" />
+                    <GradientStop Color="#FFD700" Offset="0.5" />
+                    <GradientStop Color="#FFC300" Offset="1.0" />
+                </RadialGradientBrush>
+            </Grid.Background>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="220" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <HorizontalStackLayout Grid.Row="0" Grid.Column="1" Margin="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                <Frame CornerRadius="25" HeightRequest="100" WidthRequest="100">
+                    <Image Source="logobank2.png" HeightRequest="60" WidthRequest="60" Aspect="AspectFit"/>
+                </Frame>
+                <VerticalStackLayout Margin="10,20">
+                    <Label Text="Nezih Bank" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource BankManagerColor}"/>
+                    <Label Text="Nezih, ferah bankacılık" FontSize="20" TextColor="{StaticResource DarkBlack}"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <Grid RowSpacing="5" Grid.Row="1" Margin="20,10,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Text="Hoşgeldiniz!" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0" />
+                <Label Grid.Row="2" Text="KURUMSAL" HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Bold" TextColor="White"/>
+
+                <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                    <Frame BackgroundColor="#F5EAEA" BorderColor="#4D4646" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10" Opacity="0.92">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{FontImageSource Glyph={x:Static icons:FASIconHelper.User}, FontFamily=FAS, Color=Black}" Aspect="AspectFill" Margin="10,10" VerticalOptions="Center" />
+                            <Entry x:Name="CorporateUsername" Text="" Placeholder="Müşteri/TC Kimlik Numarası" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" MaxLength="11" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#F5EAEA" BorderColor="#4D4646" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10" Opacity="0.92">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{FontImageSource Glyph={x:Static icons:FASIconHelper.Lock}, FontFamily=FAS, Color=Black}" Aspect="AspectFill" Margin="10,10" VerticalOptions="Center" />
+                            <Entry x:Name="CorporatePassword" Text="" Placeholder="Şifre" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" IsPassword="True" MaxLength="6" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#F5EAEA" BorderColor="#4D4646" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10" Opacity="0.92">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{FontImageSource Glyph={x:Static icons:FASIconHelper.Key}, FontFamily=FAS, Color=Black}" Aspect="AspectFill" Margin="10,10" VerticalOptions="Center" />
+                            <Entry x:Name="CorporateCode" Text="" Placeholder="Kullanıcı Kodu" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" IsPassword="True" MaxLength="4" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+                            <BoxView HeightRequest="1" BackgroundColor="Red" Margin="0,5"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
+                        <CheckBox x:Name="rememberCheckBox" IsChecked="False" Color="{StaticResource DarkBlack}" CheckedChanged="rememberCheckBox_CheckedChanged"/>
+                        <Label Text="Beni Hatırla" TextColor="{StaticResource DarkBlack}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        <Label Text=" Şifremi Unuttum" TextColor="{StaticResource DarkBlack}" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <Button Text="OTURUM AÇ" BackgroundColor="{StaticResource DarkBlack}" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest="300" Margin="0,15,0,0" Clicked="CorporateLoginBtnClicked"/>
+
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+   
+</ContentPage>

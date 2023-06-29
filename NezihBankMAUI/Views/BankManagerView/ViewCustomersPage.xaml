@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.BankManagerView.ViewCustomersPage"
+             Title="Müşterileri Görüntüle"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource YellowColor}}"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Disabled">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarBankManager />
+        </StackLayout>
+    </Shell.TitleView>
+    
+    <ContentPage.Background>
+        <RadialGradientBrush Center="0,0" Radius="0.8">
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray300}, Dark={StaticResource DarkGray300}}" Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray200}, Dark={StaticResource DarkGray200}}" Offset="0.5" />
+            <GradientStop Color="{AppThemeBinding Light={StaticResource LightGray100}, Dark={StaticResource DarkGray100}}" Offset="1.0" />
+        </RadialGradientBrush>
+    </ContentPage.Background>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <HorizontalStackLayout Margin="16,6,16,5" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                    <Entry 
+                        x:Name="MusteriSilEntry" 
+                        Keyboard="Numeric"
+                        MaxLength="9"
+                        ClearButtonVisibility="WhileEditing"
+                        Placeholder="Müşteri ID/Numarasını girin"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        PlaceholderColor="{AppThemeBinding Light=Gray, Dark={StaticResource DarkBlack}}"/>
+                    <Button 
+                        x:Name="btnMusteriSil"
+                        Text="Musteri Sil"
+                        TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                        Margin="5,0,0,0"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        CornerRadius="20" 
+                        BorderWidth="2" 
+                        BorderColor="Black" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource BankManagerColor}}"
+                        Clicked="btnMusteriSil_Clicked"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="16,2,16,5" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                    <Button 
+                        x:Name="btnListele"
+                        Text="Musterileri Listele"
+                        TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                        Margin="10,0,0,0"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        CornerRadius="20" 
+                        BorderWidth="2" 
+                        BorderColor="Black" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource BankManagerColor}}"
+                        Clicked="btnListele_Clicked"/>
+                    <Button 
+                        x:Name="BackButton"
+                        Text="Geri Dön"
+                        TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                        Margin="10,0,0,0"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        WidthRequest="120"
+                        CornerRadius="20" 
+                        BorderWidth="2" 
+                        BorderColor="Black" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource BankManagerColor}}"
+                        Clicked="BackButton_Clicked"/>
+                </HorizontalStackLayout>
+
+                <CollectionView 
+                    x:Name="lstMusteri"
+                    Margin="16,5,16,5" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand"  
+                    SelectionMode="None" 
+                    RemainingItemsThreshold="5" 
+                    RemainingItemsThresholdReached="lstMusteri_RemainingItemsThresholdReached">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItemView>
+                                            <Frame BackgroundColor="LightBlue" Padding="10">
+                                                <Label Text="Güncelle" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference lstMusteri}, Path=BindingContext.MusteriGuncelleCommand}" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Frame>
+                                        </SwipeItemView>
+                                        <SwipeItemView>
+                                            <Frame BackgroundColor="Red" Padding="10">
+                                                <Label Text="Sil" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference lstMusteri}, Path=BindingContext.MusteriSilCommand}" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Frame>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <Frame Margin="0,10,0,0" Padding="10" BackgroundColor="{StaticResource  BankManagerColor}">
+                                    <StackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Müşteri ID/Numarası:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource  White}"/>
+                                            <Label Text="{Binding Id}" FontSize="16" VerticalOptions="Center" TextColor="{StaticResource  White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Adı Soyadı: " FontSize="17" FontAttributes="Bold" TextColor="{StaticResource  White}"/>
+                                            <Label Text="{Binding Name}" FontSize="17" VerticalOptions="Center" TextColor="{StaticResource  White}"/>
+                                            <Label Text="{Binding Surname}" FontSize="17" VerticalOptions="Center" TextColor="{StaticResource  White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="E-posta:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource  White}"/>
+                                            <Label Text="{Binding Email}" VerticalOptions="Center" FontSize="16" TextColor="{StaticResource  White}"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="3">
+                                            <Label Text="Telefon Numarası:" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource  White}"/>
+                                            <Label Text="{Binding PhoneNumber}" VerticalOptions="Center" FontSize="16" TextColor="{StaticResource  White}"/>
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.HomePage"
+             Title="HomePage"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource Black}}"
+             Shell.FlyoutBehavior="Flyout"
+             BackgroundImageSource="bank_cld.jpg"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25"
+                VerticalOptions="Center">
+
+                <Frame Padding="8" HasShadow="True" Margin="0,0" BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}">
+                    <VerticalStackLayout Spacing="10">
+                        <Frame 
+                            HeightRequest="200"
+                            WidthRequest="330"
+                            Padding="8"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="10" 
+                            BorderColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource CorporateCustomerColor}}">
+                            <Image Source="logobank.png" />
+                        </Frame>
+                        <HorizontalStackLayout Spacing="5">
+                            <Label Text="Hoşgeldiniz, Sayın" FontSize="17"/>
+                            <Label x:Name="customerName" Text="" FontSize="17" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource YellowColor}}"/>
+                            <Label x:Name="customerSurname" Text="" FontSize="17" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource YellowColor}}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="25" HorizontalOptions="StartAndExpand">
+                            <Label Text="Tüm Hesaplarınız" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"/>
+                            <HorizontalStackLayout Spacing="4" HorizontalOptions="EndAndExpand">
+                                <Label Text="Seçili Hesap:" FontSize="16" FontAttributes="Bold" />
+                                <Label x:Name="lblTest" FontSize="16" />
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Padding="8" HasShadow="True" Margin="0,5" BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}">
+                    <Frame.Shadow>
+                        <Shadow Brush="Black" Offset="20,20" Radius="40" Opacity="0.8" />
+                    </Frame.Shadow>
+                    <CarouselView 
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        x:Name="carouselView" 
+                        CurrentItemChanged="carouselView_CurrentItemChanged" 
+                        IndicatorView="indicatorView">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout HeightRequest="230" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkBlack}}" Padding="10" Spacing="5">
+                                    <BoxView BackgroundColor="Green" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource YellowColor}}" HeightRequest="2"/>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Hesap ID:" FontSize="15" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource CrimsonColor}, Dark={StaticResource YellowColor}}"/>
+                                        <Label Text="{Binding AccountId}" FontSize="15" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Hesap Numarası:" FontSize="15" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource CrimsonColor}, Dark={StaticResource YellowColor}}"/>
+                                        <Label Text="{Binding AccountNumber}" FontSize="15" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                                    </HorizontalStackLayout>
+                                    <VerticalStackLayout Spacing="5" Margin="0,5,0,0">
+                                        <Label Text="IBAN Numarası" FontSize="15" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource CrimsonColor}, Dark={StaticResource YellowColor}}"/>
+                                        <Label Text="{Binding IbanNumber}" FontSize="15" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Spacing="5" Margin="0,5,0,0">
+                                        <Label Text="Kullanılabilir Bakiye" FontSize="14" TextColor="{AppThemeBinding Light={StaticResource CrimsonColor}, Dark={StaticResource YellowColor}}"/>
+                                        <HorizontalStackLayout Spacing="5">
+                                            <Label Text="{Binding Balance}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}" />
+                                            <Label Text="TL" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource BankManagerColor}, Dark={StaticResource White}}"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                    <BoxView BackgroundColor="Green" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource YellowColor}}" HeightRequest="2"/>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </Frame>
+
+                <IndicatorView 
+                    x:Name="indicatorView"
+                    HorizontalOptions="Center"
+                    IndicatorColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"
+                    SelectedIndicatorColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource YellowColor}}"
+                    Margin="1"/>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Button 
+                        x:Name="btnMoneyTransfer"
+                        Text="Para Transferi" 
+                        TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CorporateCustomerColor}}"
+                        FontSize="15" FontAttributes="Bold" 
+                        CornerRadius="12"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource CorporateCustomerColor}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}"
+                        Clicked="btnMoneyTransfer_Clicked"/>
+                    <Button 
+                        x:Name="btnAccountActivities"
+                        Text="Hesap Hareketleri"
+                        TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource CorporateCustomerColor}}"
+                        FontSize="15" FontAttributes="Bold" 
+                        CornerRadius="12"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource CorporateCustomerColor}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}"
+                        Clicked="btnAccountActivities_Clicked"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

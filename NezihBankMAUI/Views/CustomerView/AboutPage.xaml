@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:NezihBankMAUI.IconHelper"
+             xmlns:controls="clr-namespace:NezihBankMAUI.Controls"
+             x:Class="NezihBankMAUI.Views.CustomerView.AboutPage"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource Black}}"
+             Title="Hakkında"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}">
+
+    <Shell.TitleView>
+        <StackLayout>
+            <controls:NavbarContent />
+        </StackLayout>
+    </Shell.TitleView>
+    
+    <ScrollView>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>
+
+            <!-- başlık arkaplanı -->
+            <Image Source="header_bg.png" Aspect="AspectFill" HeightRequest="300"/>
+            <Image Source="curved_mask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1"/>
+
+            <!-- profil resmi -->
+            <Image Source="profile_black.png" Margin="0,0,0,-50" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>
+
+            <!-- Profil ad soyad, mesleği -->
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" Padding="0,50,0,0">
+                <Label HorizontalTextAlignment="Center" Text="Hüseyin Karabulut" FontAttributes="Bold" FontSize="21" TextColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource PersonalCustomerColor}}"/>
+                <Label HorizontalTextAlignment="Center" Text="Mobile Developer" Margin="0,5" FontSize="Subtitle" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"/>
+            </StackLayout>
+
+            <!-- Sosyal Medya Hesapları -->
+            <Grid Grid.Row="2" ColumnSpacing="0" RowSpacing="0" Margin="10,15,10,15">
+
+                <VerticalStackLayout Grid.Column="1" Margin="-40,0,90,0" HorizontalOptions="CenterAndExpand">
+                    <Image WidthRequest="30" HeightRequest="30" Source="{FontImageSource Glyph={x:Static icons:FABIconHelper.Linkedin}, FontFamily=FAB, Color=Black}" Aspect="AspectFill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LinkedinCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="LinkedIn" HorizontalOptions="Center" Margin="0,10" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LinkedinCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="2" Margin="80,0,80,0" HorizontalOptions="CenterAndExpand">
+                    <Image WidthRequest="31" HeightRequest="30" Source="{FontImageSource Glyph={x:Static icons:FABIconHelper.Github}, FontFamily=FAB, Color=Black}" Aspect="AspectFill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GitHubCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="GitHub" HorizontalOptions="Center" Margin="0,10" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GitHubCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="3" Margin="140,0,0,0" HorizontalOptions="CenterAndExpand">
+                    <Image WidthRequest="30" HeightRequest="30" Source="{FontImageSource Glyph={x:Static icons:FABIconHelper.m}, FontFamily=FAB, Color=Black}" Aspect="AspectFill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MediumCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Medium" HorizontalOptions="Center" Margin="0,10" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MediumCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Hakkımda açıklama metni -->
+            <ScrollView Grid.Row="3">
+                <Label x:Name="hakkimda" Margin="20,0" HorizontalTextAlignment="Center" Text="" TextColor="{AppThemeBinding Light={StaticResource DarkBlack}, Dark={StaticResource DarkBlack}}"/>
+            </ScrollView>
+
+            <HorizontalStackLayout Grid.Row="4" Spacing="10" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="10,10">
+                <Button 
+                    Text="İletişim"
+                    VerticalOptions="End" 
+                    Clicked="OnClickedContact" 
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    WidthRequest="130"
+                    TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}"/>
+                <Button
+                    x:Name="BackButton"
+                    Text="Geri Dön"
+                    VerticalOptions="End" 
+                    Clicked="BackButton_Clicked" 
+                    WidthRequest="130"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PersonalCustomerColor}, Dark={StaticResource DarkBlack}}"/>
+            </HorizontalStackLayout>
+            
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
