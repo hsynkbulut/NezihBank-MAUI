@@ -87,7 +87,7 @@ Bu uygulamada, banka yetkilileri ve bireysel müşterilerin yapabilecekleri işl
 ![Resim4](https://github.com/hsynkbulut/NezihBank-MAUI/blob/master/Project-Presentation/Ekran-G%C3%B6r%C3%BCnt%C3%BCleri/Windows/Bireysel%20M%C3%BC%C5%9Fteri%20Ekran%C4%B1/Bireysel%20M%C3%BC%C5%9Fteri%20Hakk%C4%B1nda%20Ekran%C4%B1.jpg)
 
 ## Uygulama Tanıtım Videosu
-
+https://github.com/hsynkbulut/NezihBank-MAUI/assets/106428623/b60fec60-0bd1-4fc2-95c5-c6c9786a83ba
 
 ## Uygulama Geliştiricisi
 Bu uygulama, Hüseyin Karabulut tarafından geliştirilmiştir. 
