@@ -9,8 +9,6 @@ Bu uygulamanın amacı, banka yetkilileri ve bireysel müşteriler arasında kol
 ## Uygulamanın Hedef Kitlesi
 Bu uygulamanın hedef kitlesi, banka yetkilileri ve bireysel müşterilerdir. Bu iki kullanıcı profili arasında farklı yetki ve işlevler bulunmaktadır.
 
------------------------------------------------------------------------------------------------------------------------------------------------
-
 ## Uygulamanın Özellikleri
 Bu uygulamada, banka yetkilileri ve bireysel müşterilerin yapabilecekleri işlemler şunlardır:
 
@@ -29,7 +27,7 @@ Bu uygulamada, banka yetkilileri ve bireysel müşterilerin yapabilecekleri işl
 -	Profil sayfasında kendi kişisel bilgilerini görüntüleyebilme
 -	Hakkında sayfasında Uygulama Geliştiricisi ile iletişime geçebileceği kanalları görüntüleyebilme
 
-### Proje SunumU:
+### Proje Sunumu:
 - **BİLGİ**: Bu dosyada uygulamamın proje sunum raporu yer almaktadır. İnceleyebilirsiniz:  
 [Proje Sunum Raporu](https://github.com/hsynkbulut/NezihBank-MAUI/blob/master/Project-Presentation/Proje%20Rapor%20Sunumu.pdf)
 
