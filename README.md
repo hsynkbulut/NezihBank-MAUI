@@ -96,7 +96,7 @@ Bu uygulama, Hüseyin Karabulut tarafından geliştirilmiştir.
 Eğer herhangi bir sorunuz, öneriniz veya geri bildiriminiz varsa, bana aşağıdaki kanallardan ulaşabilirsiniz:
 - LinkedIn: [LinkedIn Profilim](https://www.linkedin.com/in/hsynkbulut/)
 - Medium: [Medium Profilim](https://medium.com/@hsynkbulut)
-- E-posta: [E-mail adresim](hsyn.kbulut@gmail.com)
+- E-posta: [E-mail adresim](mailto:hsyn.kbulut@gmail.com)
 
 ## Lisans
 
